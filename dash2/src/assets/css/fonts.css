@@ -1,0 +1,17 @@
+@font-face {
+  font-family: GOTHICI-normal;
+  src: url(../../assets/fonts/GOTHIC-normal.TTF);
+}
+@font-face {
+  font-family: GOTHICI-bold;
+  src: url(../../assets/fonts/GOTHICB-bold.TTF);
+}
+@font-face {
+  font-family: GOTHICI-italic-normal;
+  src: url(../../assets/fonts/GOTHICI.TTF);
+}
+
+@font-face {
+  font-family: GOTHICI-italic-bold;
+  src: url(../../assets/fonts/GOTHICBI-ib.TTF);
+}

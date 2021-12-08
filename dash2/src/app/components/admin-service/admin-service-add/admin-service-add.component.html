@@ -1,0 +1,128 @@
+<section class="ps-3 p-0">
+  <div class="row n-blue">
+    <div class="col-12">
+      <h2 class="head__title">Add New Service</h2>
+    </div>
+
+    <div class="row pt-3">
+      <div class="col-12 m-auto">
+        <form [formGroup]="service" (ngSubmit)="addService()">
+          <!--title-->
+          <div class="mb-3">
+            <label class="form-label">Title:</label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              formControlName="title"
+              placeholder=""
+            />
+          </div>
+          <!--description-->
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >description</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              name="description"
+              formControlName="description"
+            ></textarea>
+          </div>
+          <!--size-->
+          <div class="mb-3">
+            <label class="form-label">Size:</label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="size"
+              formControlName="size"
+              placeholder=""
+            />
+          </div>
+          <!--price-->
+          <div class="mb-3">
+            <label class="form-label">Price:</label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              formControlName="price"
+              placeholder=""
+            />
+          </div>
+          <!--artistID-->
+          <div class="mb-3">
+            <label for="categories" class="form-label fw-blod">Artist</label>
+
+            <select
+              class="form-select form-select-sm n-select"
+              aria-label=".form-select-sm example"
+              name="artist"
+              formControlName="artist"
+            >
+              <option selected>Open this select menu</option>
+              <option *ngFor="let artist of artists" [value]="artist.id">
+                {{ artist.name }}
+              </option>
+            </select>
+          </div>
+          <!--category-->
+          <div class="mb-3">
+            <label class="form-label fw-blod">Category</label>
+
+            <select
+              class="form-select form-select-sm n-select"
+              aria-label=".form-select-sm example"
+              name="category"
+              formControlName="category"
+            >
+              <option selected>Open this select menu</option>
+
+              <option
+                *ngFor="let category of categeories"
+                [value]="category.id"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+
+          <!--uplaod main image-->
+          <div class="file-upload mb-3">
+            <label class="form-label fw-blod pe-3 d-block">Main Image</label>
+
+            <input
+              type="file"
+              (change)="upload($event.target.files)"
+              formControlName="mainImg"
+              writeFile="true"
+            />
+
+            Upload Percent: {{ percentDone }}% <br />
+
+            <ng-container *ngIf="uploadSuccess">
+              Upload Successful
+            </ng-container>
+          </div>
+
+          <div class="mb-3">
+            <button
+              mat-stroked-button
+              class="btn btn-blue d-block"
+              [disabled]="!service.valid || !uploadSuccess"
+              type=" submit"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

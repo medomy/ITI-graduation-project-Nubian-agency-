@@ -1,0 +1,64 @@
+.tetimonials .card {
+  position: relative;
+  padding: 20px;
+  position: relative;
+}
+.tetimonials .card::before {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  border: 3px solid var(--n-blue);
+  left: 0;
+}
+.tetimonials .card::after {
+  bottom: -11px;
+  position: absolute;
+  content: "";
+  width: 13%;
+  height: 0px;
+  top: 2rem;
+  border: 3px solid rgb(255, 255, 255);
+  transform: rotate(90deg);
+  right: -2.1rem;
+}
+@media (max-width: 767px) {
+  .tetimonials .card::after {
+    right: -1.99rem;
+    top: 1.89rem;
+
+    width: 20%;
+  }
+}
+.tetimonials .card.right {
+  margin-top: 4rem;
+}
+@media (max-width: 767px) {
+  .tetimonials .card.right {
+    margin-top: auto;
+  }
+}
+.tetimonials .card .card-body {
+  display: flex;
+  align-items: flex-start;
+}
+.tetimonials .card .triangle2 {
+  bottom: -2.7rem;
+  z-index: 2;
+  left: -1.8rem;
+  width: 62px;
+}
+
+.tetimonials .card img {
+  width: 60px;
+  border: 3px solid var(--n-blue);
+}
+
+.tetimonials .card .card-title {
+  text-transform: uppercase;
+  color: var(--n-blue);
+}
+.tetimonials .card .fon-10 {
+  font-size: 10px;
+}

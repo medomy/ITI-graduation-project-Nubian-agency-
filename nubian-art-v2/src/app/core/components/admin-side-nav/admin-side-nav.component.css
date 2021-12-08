@@ -1,0 +1,15 @@
+.admin .nav-pills .nav-link.active,
+.admin .nav-pills > .nav-link,
+.admin .nav-pills > .nav-link:hover {
+  background: var(--n-blue);
+  color: var(--n-yellow);
+  font-size: 18px;
+  font-weight: 900;
+}
+.admin .nav-pills .nav-link {
+  color: white;
+  font-family: Century Gothic !important;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+}

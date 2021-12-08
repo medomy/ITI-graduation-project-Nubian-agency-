@@ -1,0 +1,19 @@
+<div style="display: block">
+  <ng-container *ngIf="lineChartData.length != 0; else loading">
+    <canvas
+      baseChart
+      width="500"
+      height="200"
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"
+    >
+    </canvas>
+  </ng-container>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

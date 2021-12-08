@@ -1,0 +1,25 @@
+/*Register*/
+
+.register__page .form_area .form-control {
+  border-radius: unset;
+  -webkit-border-radius: unset;
+  -moz-border-radius: unset;
+  -ms-border-radius: unset;
+  -o-border-radius: unset;
+  background: #fff;
+  border: 1px solid var(--n-blue);
+}
+.register__page .form_area .form-control:focus {
+  outline-style: none;
+  box-shadow: unset;
+  background: #fff;
+}
+.input-group-text {
+  border: 1px solid var(--n-blue);
+}
+.border-right-none {
+  border-right-color: #fff;
+}
+.input-group-text {
+  cursor: pointer;
+}

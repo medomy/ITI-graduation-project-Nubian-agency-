@@ -1,0 +1,147 @@
+<!-----------------------Start Complete Order----------------------------->
+<section>
+  <div class="container">
+    <div class="row">
+      <!--content-->
+      <div class="col-md-8">
+        <!--head title-->
+
+        <div class="row">
+          <div class="col-12">
+            <h2 class="head__title">Complete your order</h2>
+          </div>
+        </div>
+
+        <!--forme area-->
+        <div class="row justify-content-center pt-md-3">
+          <div class="col-md-8 col-12">
+            <form
+              class="row g-3"
+              [formGroup]="checkOutForm"
+              (ngSubmit)="checkout()"
+            >
+              <!--information user area-->
+              <div class="col-md-12 position-relative">
+                <div class="row">
+                  <!--name-->
+                  <div class="pb-2">
+                    <span class="fw-bold">Name : </span>
+                    <span>{{ user.displayName }}</span>
+                  </div>
+                  <!--email-->
+                  <div class="pb-2">
+                    <span class="fw-bold">Email : </span>
+                    <span>{{ user.email }}</span>
+                  </div>
+                  <!--mobile-->
+
+                  <div class="pb-2">
+                    <span class="fw-bold">Mobile : </span>
+                    <span>{{ phoneNumber }}</span>
+                  </div>
+                </div>
+              </div>
+              <!--Address-->
+
+              <div class="col-md-12 position-relative">
+                <label for="address" class="form-label fw-bold">Address</label>
+                <div class="row">
+                  <div class="col-md-8">
+                    <input
+                      type="Text"
+                      class="form-control n-input"
+                      id="address"
+                      placeholder=""
+                      value=""
+                      [(ngModel)]="address"
+                      name="address"
+                      required
+                      formControlName="address"
+                    />
+                  </div>
+                  <div class="col-md-4 pt-md-0 pt-3">
+                    <input
+                      type="button"
+                      class="btn btn-blue"
+                      value="+add location"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!--Town-->
+              <div class="col-md-8 position-relative">
+                <label for="town" class="form-label fw-bold">Town</label>
+                <input
+                  type="text"
+                  class="form-control n-input"
+                  id="town"
+                  value=""
+                  [(ngModel)]="town"
+                  name="town"
+                  required
+                  formControlName="town"
+                />
+              </div>
+              <div class="col-md-4 position-relative">
+                <label for="city" class="form-label fw-bold">City</label>
+                <input
+                  type="text"
+                  class="form-control n-input"
+                  id="city"
+                  value=""
+                  [(ngModel)]="city"
+                  name="city"
+                  required
+                  formControlName="city"
+                />
+              </div>
+              <!--information price area-->
+              <div class="col-md-12">
+                <table class="table">
+                  <tbody>
+                    <tr *ngFor="let cartproduct of cartProducts; let i = index">
+                      <th scope="row">
+                        {{ cartItemsArr[i].quantity }} X {{ cartproduct.title }}
+                      </th>
+                      <td class="n-border-left">
+                        {{ cartItemsArr[i].quantity * cartproduct.price }} LE
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Shipping</th>
+                      <td class="n-border-left">30 LE</td>
+                    </tr>
+
+                    <tr class="n-border-top">
+                      <th scope="row">totalPrice:</th>
+                      <td class="n-border-left">{{ totalPrice }} LE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-12 text-center position-relative pb-5">
+                <input type="submit" value="Check out" class="btn btn-blue" />
+                <!--
+                  <a [routerLink]="['checkout']"  class="btn btn-blue"
+                  >Check out</a
+                >
+                -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--Pattern-->
+      <div class="col-md-4 d-md-block d-none">
+        <div class="order__pattern">
+          <img
+            src="https://i.ibb.co/dJgZqjZ/pattern-order.png"
+            alt="pattern-order"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-----------------------End Complete Order----------------------------->

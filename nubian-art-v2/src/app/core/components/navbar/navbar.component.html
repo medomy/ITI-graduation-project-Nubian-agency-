@@ -1,0 +1,247 @@
+<!---------------------------Start Header--------------------------->
+<header>
+  <div class="container">
+    <!---------------------------Start Navbar--------------------------->
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light align-items-center py-3">
+        <!--logo-->
+        <a class="d-flex" [routerLink]="['/home']">
+          <figure class="w-50">
+            <img src="../../../../assets/images/nubian/logo.png" alt="" />
+          </figure>
+        </a>
+
+        <!--buttom toggel menu small screen-->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--Tabs area-->
+        <div
+          class="collapse navbar-collapse justify-content-around"
+          id="navbarColor03"
+        >
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['/home']"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Home
+              </a>
+            </li>
+            <li class="nav-item ms-xl-5 ms-lg-3 ms-0">
+              <a
+                class="nav-link"
+                [routerLink]="['about']"
+                routerLinkActive="active"
+                >About us</a
+              >
+            </li>
+            <li class="nav-item ms-xl-5 ms-lg-3 ms-0">
+              <a
+                class="nav-link"
+                [routerLink]="['service']"
+                routerLinkActive="active"
+              >
+                Service</a
+              >
+            </li>
+            <li class="nav-item ms-xl-5 ms-lg-3 ms-0">
+              <a
+                class="nav-link"
+                [routerLink]="['do-your-way']"
+                routerLinkActive="active"
+                >Do it your way</a
+              >
+            </li>
+          </ul>
+          <!--Icon Areaa-->
+          <div
+            class="d-md-flex justify-content-center align-items-center"
+            *ngIf="loggedIn; else logedOut"
+          >
+            <!--search-->
+            <div class="d-lg-block search__icon">
+              <a class="nav-link" [routerLink]="['search']">
+                <!-- <i class="fa fa-search f-normal  " aria-hidden="true"></i> -->
+                <svg
+                  width="16"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.71046 19.4209C4.36119 19.4209 0 15.0597 0 9.71047C0 4.3612 4.36119 0 9.71046 0C15.0597 0 19.4209 4.3612 19.4209 9.71047C19.4209 15.0938 15.0597 19.4209 9.71046 19.4209ZM9.71046 2.18059C5.5537 2.18059 2.18058 5.55371 2.18058 9.71047C2.18058 13.8672 5.5537 17.2403 9.71046 17.2403C13.8672 17.2403 17.2403 13.8672 17.2403 9.71047C17.2403 5.55371 13.8672 2.18059 9.71046 2.18059Z"
+                    fill="#2F2EA6"
+                  />
+                  <path
+                    d="M23.8144 24.1215C23.5418 24.1215 23.2693 24.0193 23.0648 23.8148L15.4668 16.2168C15.0579 15.808 15.0579 15.1265 15.4668 14.6836C15.8757 14.2747 16.5571 14.2747 17 14.6836L24.5981 22.2816C25.0069 22.6905 25.0069 23.3719 24.5981 23.8148C24.3596 24.0193 24.087 24.1215 23.8144 24.1215Z"
+                    fill="#2F2EA6"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <!--cart-->
+            <div>
+              <a class="nav-link" [routerLink]="['service/cart']">
+                <i
+                  class="fas fa-shopping-cart n-blue hover"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+            <!--nofication-->
+            <div class="me-4">
+              <!-- <a class="nav-link" [routerLink]="['cart']">
+                <i class="fas fa-bell n-blue hover" aria-hidden="true"></i>
+              </a> -->
+
+              <div ngbDropdown class="topbar">
+                <a
+                  href
+                  (click)="(false)"
+                  ngbDropdownToggle
+                  class="n-blue hover"
+                >
+                  <span
+                    matBadge="{{ ResponseDataOrder.length }}"
+                    matBadgeOverlap="false"
+                  >
+                    <i class="fas fa-bell n-blue hover" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <div ngbDropdownMenu class="pb-0 pt-0 px-0">
+                  <h6 class="dropdown-header">notications</h6>
+                  <span *ngIf="!ResponseDataOrder; else adminRes">
+                    Not have notications..
+                  </span>
+
+                  <ng-template #adminRes>
+                    <div
+                      ngbDropdownItem
+                      class="item__not-view pointer d-flex py-3"
+                      [ngClass]="{ item__view: item.isView }"
+                      *ngFor="let item of ResponseDataOrder"
+                    >
+                      <img
+                        [src]="item.prodcutData.images.mainImage"
+                        style="width: 30px"
+                        class="mx-2"
+                      />
+                      <a
+                        class="text-dark fw-bold"
+                        (click)="viewCustomePrd(item.id, item.prodcutData.id)"
+                      >
+                        <span class="text-muted">Check Your Service</span>
+                        <br />
+                        {{ item.prodcutData.title }}
+                      </a>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+
+            <!--profile-->
+
+            <div class="text-white d-flex align-items-center">
+              <div ngbDropdown>
+                <a
+                  href
+                  (click)="(false)"
+                  ngbDropdownToggle
+                  class="n-blue hover"
+                >
+                  <ng-container *ngIf="userData; else User">
+                    <img
+                      src="{{ userData[0].avatar }}"
+                      class="avatar rounded-circle"
+                      height="30"
+                      alt=""
+                    />
+                  </ng-container>
+
+                  <ng-template #User>
+                    <img
+                      [src]="user.photoURL"
+                      class="avatar rounded-circle"
+                      height="30"
+                      alt=""
+                    />
+                  </ng-template>
+                  {{ user.displayName }}
+                </a>
+                <div ngbDropdownMenu>
+                  <button ngbDropdownItem [routerLink]="['profile/', user.uid]">
+                    Profile
+                  </button>
+
+                  <div class="dropdown-divider"></div>
+                  <button ngbDropdownItem (click)="logout()">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--if not user login area-->
+          <ng-template #logedOut>
+            <div class="d-md-flex justify-content-center">
+              <!--search-->
+              <div class="d-lg-block">
+                <a class="nav-link" [routerLink]="['search']">
+                  <svg
+                    width="16"
+                    height="25"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.71046 19.4209C4.36119 19.4209 0 15.0597 0 9.71047C0 4.3612 4.36119 0 9.71046 0C15.0597 0 19.4209 4.3612 19.4209 9.71047C19.4209 15.0938 15.0597 19.4209 9.71046 19.4209ZM9.71046 2.18059C5.5537 2.18059 2.18058 5.55371 2.18058 9.71047C2.18058 13.8672 5.5537 17.2403 9.71046 17.2403C13.8672 17.2403 17.2403 13.8672 17.2403 9.71047C17.2403 5.55371 13.8672 2.18059 9.71046 2.18059Z"
+                      fill="#2F2EA6"
+                    />
+                    <path
+                      d="M23.8144 24.1215C23.5418 24.1215 23.2693 24.0193 23.0648 23.8148L15.4668 16.2168C15.0579 15.808 15.0579 15.1265 15.4668 14.6836C15.8757 14.2747 16.5571 14.2747 17 14.6836L24.5981 22.2816C25.0069 22.6905 25.0069 23.3719 24.5981 23.8148C24.3596 24.0193 24.087 24.1215 23.8144 24.1215Z"
+                      fill="#2F2EA6"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <!--buttom login   -->
+              <div class="px-md-2 py-lg-0 py-2">
+                <a
+                  class="nav-link btn btn-blue text-white login ms-lg-1 ms-0"
+                  [routerLink]="['auth/login']"
+                  >Log in</a
+                >
+              </div>
+              <!--buttom   register -->
+              <div class="px-md-2 py-lg-0 py-2">
+                <a
+                  class="nav-link btn btn-blue btn-border register ms-lg-3 ms-0"
+                  [routerLink]="['auth/register']"
+                  >Sign up</a
+                >
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </nav>
+    </div>
+
+    <!---------------------------End Navbar--------------------------->
+  </div>
+</header>
+<!---------------------------ENd Header--------------------------->

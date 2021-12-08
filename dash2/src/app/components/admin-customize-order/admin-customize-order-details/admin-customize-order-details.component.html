@@ -1,0 +1,151 @@
+<section class="ps-3 p-0 n-blue">
+  <div class="row n-blue">
+    <div class="col-12">
+      <h2 class="head__title">Request customize order</h2>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!!data; else loading">
+    <!--user info-->
+    <div class="row pt-5">
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-2">
+            <img
+              [src]="data.userData[0].avatar"
+              alt=""
+              style="width: 150px; border-radius: 50%"
+            />
+          </div>
+          <div class="col-2">
+            <h3 class="ps-5">{{ data.userData[0].displayName }}</h3>
+            <span>{{ data.userData[0].email }}</span>
+          </div>
+
+          <div class="col-6 text-end pt-5">
+            <p class="pt-5">
+              <span class="fw-bold"> {{ data.userData[0].displayName }}</span>
+              send a request to custmize an
+              <br />order , waiting your answer
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--product info-->
+    <div class="row pt-5">
+      <!--left-->
+      <div class="col-md-6 col-12">
+        <!--main img-->
+        <div class="row main__img">
+          <div class="col-12">
+            <img
+              [src]="data.productData.images.mainImage"
+              class="w-100"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-12">
+        <div>
+          <h3>{{ data.productData.title }}</h3>
+
+          <ul class="list-inline">
+            <li class="list-inline-item fs-5">
+              <i class="fa fa-star n-yellow"></i>
+            </li>
+            <li class="list-inline-item fs-5">
+              <i class="fa fa-star n-yellow"></i>
+            </li>
+            <li class="list-inline-item fs-5">
+              <i class="fa fa-star n-yellow"></i>
+            </li>
+            <li class="list-inline-item fs-5">
+              <i class="fa fa-star n-yellow"></i>
+            </li>
+            <li class="list-inline-item fs-5">
+              <i class="fa fa-star n-yellow"></i>
+            </li>
+          </ul>
+          <p class="n-red fw-bold fs-5">{{ data.productData.price }} LE</p>
+          <p class="">Default Size: 100x70 cm</p>
+
+          <p class="text-dark">
+            {{ data.productData.description }}
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <label for="size" class="form-label">Size:</label>
+          <span> {{ data.desiredSize }}</span>
+        </div>
+        <div class="mb-3">
+          <label for="color" class="form-label">Frame color:</label>
+          <div class="d-flex">
+            <span class="dot" [ngStyle]="{ background: data.frameColor }">
+            </span>
+
+            <span class="ps-3" [ngStyle]="{ color: data.frameColor }">
+              {{ data.frameColor }}
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="special" class="form-label">Custom Image:</label>
+          <img [src]="data.photoUrl" alt="" srcset="" />
+        </div>
+
+        <div class="mb-3">
+          <label for="special" class="form-label">Special request:</label>
+          <textarea
+            class="form-control n-input"
+            id="special"
+            rows="6"
+            name="special"
+            [(ngModel)]="data.specialOrder"
+            disabled
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <!--Admin answer-->
+
+    <div class="row pt-5">
+      <div class="col-12">
+        <form [formGroup]="response" (ngSubmit)="adminResponse()">
+          <div class="mb-3">
+            <label for="special" class="form-label">Admin answer:</label>
+            <textarea
+              class="form-control n-input"
+              id="special"
+              rows="6"
+              name="special"
+              formControlName="answer"
+              [(ngModel)]="data.AdminResponse"
+            >
+            </textarea>
+          </div>
+
+          <div class="mb-3">
+            <button
+              class="btn btn-blue d-block"
+              [disabled]="!response.valid || !response.dirty"
+              type=" submit"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</section>

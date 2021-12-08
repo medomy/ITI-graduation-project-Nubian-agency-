@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+/*Global vairable*/
+/*----------------------------GLobal----------------------------*/
+@import url(./assets/css/fonts.css);
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+ul {
+  list-style: none;
+}
+tr,
+td,
+th {
+  border: unset;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.n-input-error,
+.ng-invalid:not(form) {
+  background: rgba(255, 0, 0, 0.2) !important;
+  border: 2px solid #ff0000 !important;
+}
+/* .form-select.n-select.ng-invalid {
+  cursor: pointer;
+  background-image: url(https://i.ibb.co/Vm6W03d/arrow-select.png) !important;
+  border: 2px solid #2f2ea6;
+  color: #2f2ea6;
+  border-radius: unset;
+  -webkit-border-radius: unset;
+  -moz-border-radius: unset;
+  -ms-border-radius: unset;
+  -o-border-radius: unset;
+} */
+
+.swiper-button-next:after {
+  content: url("https://i.ibb.co/Dwp07Zp/arrow-01.png");
+}
+
+.swiper-button-prev::after {
+  content: url("https://i.ibb.co/TK05XZT/arrow-02.png");
+}
+
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer {
+  background-color: var(--n-blue) !important;
+  border: unset;
+  outline-style: unset;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer.ngx-slider-active {
+  background-color: var(--n-blue-hover) !important;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
+  background-color: #fff !important;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-bar {
+  opacity: 0.51;
+  background: var(--n-blue);
+}
+
+.ngx-slider-span .ngx-slider-bar-wrapper .ngx-slider-full-bar {
+  background: red !important;
+}
+.search .calendar svg path {
+  fill: var(--n-blue);
+}
+
+.pattern {
+  position: absolute;
+  left: 71vw;
+  top: 0;
+  z-index: -1;
+}
+.fs-7 {
+  font-size: 13px;
+}
+
+.bg-blue {
+  background: var(--n-blue);
+}
+.pointer {
+  cursor: pointer;
+}
+
+.form-select .ng-invalid .ng-touched {
+  background: white !important;
+}
+
+.shadow {
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+.text-gray-300 {
+  color: #dddfeb !important;
+}
+.border-left-primary {
+  border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e !important;
+}
+.border-left-info {
+  border-left: 0.25rem solid #36b9cc !important;
+}

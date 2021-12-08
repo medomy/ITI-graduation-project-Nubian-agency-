@@ -1,0 +1,174 @@
+<section class="ps-3 p-0">
+  <div class="row n-blue">
+    <div class="col-12">
+      <h2 class="head__title">Update Service</h2>
+    </div>
+
+    <div class="row pt-3" *ngIf="!isLoading; else loading">
+      <div class="col-12 m-auto">
+        <div *ngIf="addSuccess">
+          <p *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" (closed)="close(alert)">{{
+              alert.message
+            }}</ngb-alert>
+          </p>
+        </div>
+
+        <form [formGroup]="serviceForm" (ngSubmit)="updateService()">
+          <!--title-->
+          <div class="mb-3">
+            <label class="form-label">Title:</label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              formControlName="title"
+              placeholder=""
+              [(ngModel)]="currentProduct.title"
+            />
+          </div>
+          <!--description-->
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >description</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              name="description"
+              formControlName="description"
+              [(ngModel)]="currentProduct.description"
+            ></textarea>
+          </div>
+          <!--size-->
+          <div class="mb-3">
+            <label class="form-label">Size:</label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="size"
+              formControlName="size"
+              placeholder=""
+              [(ngModel)]="currentProduct.size"
+            />
+          </div>
+          <!--price-->
+          <div class="mb-3">
+            <label class="form-label">Price:</label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              formControlName="price"
+              placeholder=""
+              [(ngModel)]="currentProduct.price"
+            />
+          </div>
+          <!--artistID-->
+          <div class="mb-3">
+            <label for="categories" class="form-label fw-blod">Artist</label>
+
+            <select
+              class="form-select form-select-sm n-select"
+              aria-label=".form-select-sm example"
+              name="artist"
+              formControlName="artist"
+              [(ngModel)]="currentArtist.id"
+            >
+              <option [value]="currentArtist.id">
+                {{ currentArtist.name }}
+              </option>
+              <option *ngFor="let artist of artists" [value]="artist.id">
+                {{ artist.name }}
+              </option>
+            </select>
+          </div>
+          <!--category-->
+          <div class="mb-3">
+            <label class="form-label fw-blod">Category</label>
+
+            <select
+              class="form-select form-select-sm n-select"
+              aria-label=".form-select-sm example"
+              name="category"
+              formControlName="category"
+              [(ngModel)]="currentCategeory.id"
+            >
+              <option selected [value]="currentCategeory.id">
+                {{ currentCategeory.name }}
+              </option>
+              <option
+                *ngFor="let category of categeories"
+                [value]="category.id"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <img [src]="currentProduct.images.mainImage" alt="" class="w-25" />
+          </div>
+
+          <!--uplaod main image-->
+          <div class="file-upload mb-3">
+            <label class="form-label fw-blod pe-3 d-block">Main Image</label>
+
+            <input
+              type="file"
+              (change)="upload($event.target.files)"
+              formControlName="mainImg"
+              writeFile="true"
+              [(ngModel)]="currentProduct.images.mainImage"
+            />
+
+            Upload Percent: {{ percentDone }}% <br />
+
+            <ng-container *ngIf="uploadSuccess">
+              Upload Successful
+            </ng-container>
+          </div>
+
+          <div class="mb-3">
+            <button
+              class="btn btn-primary d-block w-100"
+              [disabled]="!serviceForm.dirty || !serviceForm.valid"
+              type=" submit"
+              class="btn btn-success w-100"
+              (click)="showSuccess()"
+              ngbTooltip="Will disappear in 10s"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <div class="row pt-5 mt-5">
+        <div class="col-6 text-center pt-5 mt-5 m-auto">
+          <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+<app-toasts
+  aria-live="polite"
+  aria-atomic="true"
+  class="toasts-postion"
+></app-toasts>

@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+/*Global vairable*/
+/*----------------------------GLobal----------------------------*/
+@import url(./assets/css/fonts.css);
+
+body {
+  font-family: GOTHICI-normal !important;
+
+  font-style: normal;
+  font-weight: normal;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+ul {
+  list-style: none;
+}
+tr,
+td,
+th {
+  border: unset;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* .n-input-error,
+.ng-invalid:not(form) {
+  background: rgba(255, 0, 0, 0.2) !important;
+  border: 2px solid #ff0000 !important;
+} */
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948 !important; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442 !important; /* red */
+}
+
+.swiper-button-next:after {
+  content: url("https://i.ibb.co/Dwp07Zp/arrow-01.png");
+}
+
+.swiper-button-prev::after {
+  content: url("https://i.ibb.co/TK05XZT/arrow-02.png");
+}
+
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer {
+  background-color: var(--n-blue) !important;
+  border: unset;
+  outline-style: unset;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer.ngx-slider-active {
+  background-color: var(--n-blue-hover) !important;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
+  background-color: #fff !important;
+}
+.custom-ngx-slider .ngx-slider .ngx-slider-bar {
+  opacity: 0.51;
+  background: var(--n-blue);
+}
+
+.ngx-slider-span .ngx-slider-bar-wrapper .ngx-slider-full-bar {
+  background: red !important;
+}
+.search .calendar svg path {
+  fill: var(--n-blue);
+}
+
+.pattern {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.fs-7 {
+  font-size: 13px;
+}
+
+.bg-blue {
+  background: var(--n-blue);
+}
+.pointer {
+  cursor: pointer;
+}
+
+/* .form-select .ng-invalid .ng-touched {
+  background: white !important;
+} */

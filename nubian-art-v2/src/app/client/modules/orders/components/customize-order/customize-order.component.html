@@ -1,0 +1,147 @@
+<section class="serivce__details n-blue">
+  <div class="container">
+    <div class="row">
+      <!--left-->
+      <div class="col-md-6 col-12">
+        <!--main img-->
+        <div class="row main__img">
+          <div class="col-12">
+            <figure class="">
+              <img [src]="product.images.mainImage" alt="" srcset="" />
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--right-->
+      <div class="col-md-6 col-12">
+        <!--title-->
+        <div class="row">
+          <div class="col-12">
+            <div>
+              <h3>{{ product.title }}</h3>
+
+              <ul class="list-inline">
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+              </ul>
+              <p class="n-red fw-bold fs-5">{{ product.price }} LE</p>
+              <p class="">Default Size: 100x70 cm</p>
+              <p class="text-dark">
+                Morbi leo risus, porta acoor bagt consectetur ac, vestibulum at
+                eros. Morbi leo risus, porta acr vdv trtee consectetur ac,
+                vestibulum at. erosleo risus, porta ac consectetur vestibulum at
+                eros. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros.
+              </p>
+            </div>
+
+            <div class="mb-3">
+              <label for="size" class="form-label">Size:</label>
+              <input
+                type="text"
+                class="form-control n-input w-75"
+                id="size"
+                placeholder="Default 100x70cm"
+                [(ngModel)]="sizeValue"
+                #ctrl="ngModel"
+                name="size"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="color" class="form-label">Frame color:</label>
+              <input
+                type="color"
+                class="form-control form-control-color n-input"
+                id="color"
+                value="#563d7c"
+                title="Choose your color"
+                [(ngModel)]="colorValue"
+                #ctrl="ngModel"
+                name="color"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="special" class="form-label">Special request:</label>
+              <textarea
+                class="form-control n-input"
+                id="special"
+                rows="6"
+                [(ngModel)]="specialReqValue"
+                #ctrl="ngModel"
+                name="special"
+              ></textarea>
+            </div>
+
+            <!--uplaod main image-->
+            <div class="file-upload mb-3">
+              <label class="form-label fw-blod pe-3 d-block">Main Image</label>
+
+              <input
+                type="file"
+                (change)="upload($event.target.files)"
+                formControlName="mainImg"
+                writeFile="true"
+              />
+
+              Upload Percent: {{ percentDone }}% <br />
+
+              <ng-container *ngIf="uploadSuccess">
+                Upload Successful
+              </ng-container>
+            </div>
+            <div class="mb-3">
+              <span class="text-dark">
+                add your customized service to cart or wishlist so we can check
+                and reply with the price according to the new feature you want.
+              </span>
+            </div>
+
+            <div class="col-12 m-auto"></div>
+
+            <div *ngIf="addSuccess">
+              <p *ngFor="let alert of alerts">
+                <ngb-alert [type]="alert.type" (closed)="close(alert)">{{
+                  alert.message
+                }}</ngb-alert>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- btn request-->
+        <div class="row">
+          <div class="col-md-8 col-12 mb-md-0 mb-2">
+            <div class="row">
+              <div class="col-md-6">
+                <span (click)="confirmOrder()"
+                  ><a class="btn btn-blue btn-border"> confirm order </a></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!---------------------------Start  tetimonials--------------------------->
+<app-testimonials></app-testimonials>
+<!---------------------------End Tetimonials--------------------------->
+
+<!---------------------------Start  more like this--------------------------->
+<app-more-like></app-more-like>
+<!---------------------------End  more like this--------------------------->

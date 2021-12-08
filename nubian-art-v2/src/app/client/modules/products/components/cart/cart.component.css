@@ -1,0 +1,19 @@
+.cart .table > thead > tr > td,
+.cart .table > tbody > tr > td,
+.cart .table > tfoot > tr > td {
+  vertical-align: middle;
+}
+.cart__item-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+.cart__item-desc {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 25px;
+  color: #000000;
+}
+.cart__item-remove,
+.cart__item-icon {
+  cursor: pointer;
+}

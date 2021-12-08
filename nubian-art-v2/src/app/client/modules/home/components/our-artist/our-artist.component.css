@@ -1,0 +1,28 @@
+.swiper.swiper-2 .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .swiper.swiper-2 .swiper-slide {
+    width: auto !important;
+  }
+}
+.swiper.swiper-2 .swiper-slide figure figcaption {
+  color: var(--n-yellow);
+  font-size: 36px;
+}
+
+.swiper.swiper-2 .swiper-slide figure figcaption h6 {
+  font-weight: bold;
+  font-size: 40px;
+}
+.swiper.swiper-2 .swiper-slide figure figcaption h4 {
+  font-size: 23px;
+}
+.swiper.swiper-2 .swiper-slide-next figure figcaption {
+  color: var(--n-blue);
+}

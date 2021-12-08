@@ -1,0 +1,120 @@
+<section class="ps-3 p-0 service__admin">
+  <div class="row pb-3">
+    <div class="col-8">
+      <h2 class="head__title fs-4">Order</h2>
+      <h2 class="head__title fs-4">Customize Order</h2>
+    </div>
+  </div>
+
+  <div class="example-header">
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <ng-container *ngIf="dataSource; else loading">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- product Column -->
+        <ng-container matColumnDef="ItemsOrder">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Items Order
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <p *ngFor="let item of row.cartItems">
+              {{ item.productData.title }}
+            </p>
+          </mat-cell>
+        </ng-container>
+        <!-- color Column -->
+        <ng-container matColumnDef="Total">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            TotalPice
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.totalPrice }}</mat-cell>
+        </ng-container>
+        <!-- size Column -->
+        <ng-container matColumnDef="user">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            User
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{ row.userData.displayName }}</mat-cell
+          >
+        </ng-container>
+        <!-- message Column -->
+        <ng-container matColumnDef="address" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Address
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            {{ row.addressData.data[1].town }}</mat-cell
+          >
+        </ng-container>
+        <!-- user Column -->
+        <ng-container matColumnDef="Payment" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Payment
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            <span
+              *ngIf="row.Ispaid; else pending"
+              class="btn btn-success btn-sm"
+              >Paid</span
+            >
+
+            <ng-template #pending>
+              <span
+                (click)="updatePayment(row.id)"
+                class="btn btn-warning btn-sm"
+                >Not Paid
+              </span>
+            </ng-template>
+          </mat-cell>
+        </ng-container>
+
+        <!-- user Column -->
+        <ng-container matColumnDef="create" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Order date
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            {{ row.timeStamp.createdAt }}</mat-cell
+          >
+        </ng-container>
+
+        <!-- status Column -->
+
+        <ng-container matColumnDef="status" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Status
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            <span
+              *ngIf="row.status; else pending"
+              class="btn btn-success btn-sm"
+              >Delivered</span
+            >
+
+            <ng-template #pending>
+              <span
+                (click)="updateStatus(row.id)"
+                class="btn btn-warning btn-sm"
+                >Not Delivered
+              </span>
+            </ng-template>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+      </mat-table>
+    </ng-container>
+
+    <ng-template #loading> <app-loading></app-loading> </ng-template>
+  </div>
+</section>

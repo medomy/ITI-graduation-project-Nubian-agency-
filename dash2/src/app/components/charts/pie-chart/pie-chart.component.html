@@ -1,0 +1,18 @@
+<div style="display: block">
+  <ng-container *ngIf="pieChartData.length != 0; else loading">
+    <canvas
+      baseChart
+      [data]="pieChartData"
+      [labels]="pieChartLabels"
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [legend]="pieChartLegend"
+      [colors]="chartColors"
+    >
+    </canvas>
+  </ng-container>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

@@ -1,0 +1,265 @@
+<div class="profile__order-area">
+  <div class="container">
+    <div class="row">
+      <nav ngbNav #nav="ngbNav" class="nav-tabs">
+        <!--order history -->
+        <ng-container ngbNavItem>
+          <a ngbNavLink><span>My order history</span></a>
+
+          <ng-template ngbNavContent>
+            <div
+              class="row pt-3"
+              *ngFor="let orderedProduct of orderedProducts; let i = index"
+            >
+              <div class="col-md-5">
+                <div class="d-flex">
+                  <figure>
+                    <img
+                      [src]="orderedProduct.images.mainImage"
+                      class="n-border"
+                      alt=""
+                      srcset=""
+                    />
+                  </figure>
+
+                  <div class="ps-4">
+                    <h4 class="">{{ orderedProduct.title }}</h4>
+                    <p class="fw-bold pt-5">You Rated the service:</p>
+                    <div>
+                      <ngb-rating
+                        rate="3"
+                        class="fs-3 n-yellow"
+                        name="RAting"
+                      ></ngb-rating>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Price</th>
+                      <td class="n-border-left">
+                        {{ orderedProduct.price }} LE
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Duration</th>
+                      <td class="n-border-left">2 weeks</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Delivery date</th>
+                      <td class="n-border-left">2 Oct 2021</td>
+                    </tr>
+                    <tr class="n-border-top">
+                      <th scope="row">totalPrice:</th>
+                      <td class="n-border-left">
+                        {{ orderedProduct.price }} LE
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-3">
+                <div class="d-flex flex-column pt-md-5">
+                  <span class="btn btn-blue btn-border my-2">
+                    upload photos
+                  </span>
+                  <span
+                    class="btn btn-blue my-2"
+                    [routerLink]="[
+                      '/service/list',
+                      orderedProduct.categoryID,
+                      'details',
+                      orderedProduct.id
+                    ]"
+                  >
+                    Re-Order
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <hr class="n-hr" />
+            </div>
+          </ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink><span>My Custom orders history</span></a>
+
+          <ng-template ngbNavContent>
+            <div
+              class="row pt-3"
+              *ngFor="let customOrder of custumOrders; let i = index"
+            >
+              <div class="col-md-5">
+                <div class="d-flex">
+                  <figure>
+                    <img
+                      [src]="customOrder.images.mainImage"
+                      class="n-border"
+                      alt=""
+                      srcset=""
+                    />
+                  </figure>
+
+                  <div class="ps-4">
+                    <h4 class="">{{ customOrder.title }}</h4>
+                    <p class="fw-bold pt-5">You Rated the service:</p>
+                    <ngb-rating rate="4" class="fs-3 n-yellow"></ngb-rating>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Price</th>
+                      <td class="n-border-left">{{ customOrder.price }} LE</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Duration</th>
+                      <td class="n-border-left">2 weeks</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Delivery date</th>
+                      <td class="n-border-left">2 Oct 2021</td>
+                    </tr>
+                    <tr class="n-border-top">
+                      <th scope="row">totalPrice:</th>
+                      <td class="n-border-left">{{ customOrder.price }} LE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-3">
+                <div class="d-flex flex-column pt-md-5">
+                  <span class="btn btn-blue btn-border my-2">
+                    confirmRate
+                  </span>
+                  <span class="btn btn-blue my-2"> Re-Order </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <hr class="n-hr" />
+            </div>
+          </ng-template>
+        </ng-container>
+        <!--
+          
+        -->
+        <!--wishlist-->
+        <ng-container ngbNavItem>
+          <a ngbNavLink><span>My wishlist</span></a>
+          <ng-template ngbNavContent>
+            <div class="row wishlist__head px-2 py-1">
+              <div class="col-6">Product</div>
+              <div class="col-4 text-center">Price</div>
+              <div class="col-2"></div>
+            </div>
+            <div
+              class="row pt-3 pb-3 wishlist__body"
+              *ngFor="let _product of wishListProducts; let i = index"
+            >
+              <!--Product details-->
+              <div
+                class="
+                  col-md-6
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <div class="d-flex flex-md-row flex-column">
+                  <figure>
+                    <img
+                      [src]="_product.product.images.mainImage"
+                      class="n-border"
+                      alt=""
+                      srcset=""
+                    />
+                  </figure>
+                  <div class="ms-3">
+                    <h4>{{ _product.product.name }}</h4>
+                    <ul class="list-inline">
+                      <li class="list-inline-item fs-5">
+                        <i class="fa fa-star n-yellow"></i>
+                      </li>
+                      <li class="list-inline-item fs-5">
+                        <i class="fa fa-star n-yellow"></i>
+                      </li>
+                      <li class="list-inline-item fs-5">
+                        <i class="fa fa-star n-yellow"></i>
+                      </li>
+                      <li class="list-inline-item fs-5">
+                        <i class="fa fa-star n-yellow"></i>
+                      </li>
+                      <li class="list-inline-item fs-5">
+                        <i class="fa fa-star n-yellow"></i>
+                      </li>
+                    </ul>
+                    <p>
+                      Morbi leo risus, porta ac consectetur ac, vestibulum at
+                      eros. 100x70 cm
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!--Product Price-->
+              <div
+                class="
+                  col-md-4
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                "
+              >
+                <span class="price">{{ _product.product.price }}LE</span>
+              </div>
+              <!--Product Action-->
+              <div class="col-md-2">
+                <div
+                  class="
+                    d-flex
+                    flex-md-column
+                    align-items-md-end align-items-center
+                    justify-content-center
+                  "
+                >
+                  <span
+                    class="close my-3 d-md-block d-none"
+                    (click)="remove(_product.id, i)"
+                    style="cursor: pointer"
+                    >&#10005;</span
+                  >
+                  <span
+                    class="btn btn-blue ms-md-0 ms-1"
+                    (click)="addtocart(_product.product.id)"
+                  >
+                    Add to cart</span
+                  >
+                  <span
+                    class="btn btn-red my-md-2 ms-md-0 ms-1 d-md-none d-block"
+                  >
+                    Remove</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <hr class="n-hr" />
+            </div>
+          </ng-template>
+        </ng-container>
+      </nav>
+
+      <div [ngbNavOutlet]="nav" class=""></div>
+    </div>
+  </div>
+</div>

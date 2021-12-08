@@ -1,0 +1,60 @@
+<section class="tetimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-12   pb-5">
+        <h2 class="head__title">Client testimonials</h2>
+
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md-6 col-12 mb-2 " *ngFor="let review of reviews">
+        <!-- item -->
+        <div class="card mb-4  p-3 border-0 " [ngClass]="{'right': review.dir=='right'}">
+          <div class="card-body position-relative">
+            <!--image-->
+
+            <figure class="">
+              <span class="triangle2"><svg width="98" height="84" viewBox="0 0 98 84" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M34.6569 30.5176L69.3125 83.7086L0.00130233 83.7086L34.6569 30.5176Z" fill="#2F2EA6" />
+                  <path d="M62.7572 55.2148L28.1016 0.124165L97.4128 0.124162L62.7572 55.2148Z" fill="#2F2EA6" />
+                </svg>
+              </span>
+              <img [src]="review.img" class="rounded-circle card-img-top" />
+            </figure>
+
+
+
+            <div class="px-3">
+              <!--client name-->
+              <h6 class="card-title">{{review.name}}</h6>
+              <!--star-->
+              <div class="font-10">
+                <span> <i class=" fa fa-star n-yellow"></i></span>
+                <span> <i class=" fa fa-star n-yellow"></i></span>
+                <span> <i class=" fa fa-star n-yellow"></i></span>
+                <span> <i class=" fa fa-star n-yellow"></i></span>
+                <span> <i class=" fa fa-star n-yellow"></i></span>
+
+              </div>
+
+              <!--comment-->
+              <p class="mb-3 card-text">Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                Morbi
+                leo
+                risus,
+                porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row pb-5">
+      <span class="triangle1 left"><img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" alt=""></span>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,79 @@
+<section class="ps-3 p-0 service__admin">
+  <div class="row pb-3">
+    <div class="col-8">
+      <h2 class="head__title fs-4">Users</h2>
+    </div>
+  </div>
+  <ng-container *ngIf="dataSource; else loading">
+    <div class="example-header">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Filter"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="avatar">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Avatar
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <img [src]="row.avatar" alt="" style="width: 50px" />
+          </mat-cell>
+        </ng-container>
+
+        <!-- name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Name
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.displayName }}</mat-cell>
+        </ng-container>
+
+        <!-- email Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="pe-5">
+            Email
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="pe-5">
+            {{ row.email }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- counphonetry Column -->
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Phone
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ms-3">
+            {{ row.phoneNumber }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- verified Column -->
+        <ng-container matColumnDef="verified">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Verified
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{ row.emailVerified }}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</section>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nubian-art-agancy": {
+      "hosting": {
+        "nubian-art": [
+          "nubian-art-agancy"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nubian-art-agancy"
+  }
+}

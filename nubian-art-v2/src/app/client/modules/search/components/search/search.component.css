@@ -1,0 +1,14 @@
+.Price {
+  position: relative;
+}
+
+.search .form-select.n-select {
+  padding: 0.5rem;
+}
+.search .form-control.n-date {
+  border-right: unset;
+  padding: 0.4rem;
+}
+.search .calendar {
+  border-left: unset;
+}

@@ -1,0 +1,61 @@
+<div class="row n-blue">
+  <div class="col-12">
+    <h2 class="head__title">Add New Category</h2>
+  </div>
+
+  <div class="row pt-3">
+    <div class="col-12 m-auto">
+      <div *ngIf="addSuccess">
+        <p *ngFor="let alert of alerts">
+          <ngb-alert [type]="alert.type" (closed)="close(alert)">{{
+            alert.message
+          }}</ngb-alert>
+        </p>
+      </div>
+
+      <form [formGroup]="category" (ngSubmit)="addCategory()">
+        <!--Category name-->
+        <div class="mb-3">
+          <label class="form-label">Category name:</label>
+
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            formControlName="name"
+            placeholder=""
+          />
+        </div>
+
+        <!--uplaod image-->
+        <div class="file-upload mb-3">
+          <input
+            type="file"
+            (change)="upload($event.target.files)"
+            formControlName="image"
+            writeFile="true"
+          />
+
+          Upload Percent: {{ percentDone }}% <br />
+
+          <ng-container *ngIf="uploadSuccess"> Upload Successful </ng-container>
+        </div>
+
+        <div class="mb-3">
+          <button
+            class="btn btn-blue d-block"
+            [disabled]="!category.valid || !uploadSuccess"
+            type=" submit"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-toasts
+  aria-live="polite"
+  aria-atomic="true"
+  class="toasts-postion"
+></app-toasts>

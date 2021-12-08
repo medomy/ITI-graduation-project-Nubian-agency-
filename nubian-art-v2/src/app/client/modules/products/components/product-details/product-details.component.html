@@ -1,0 +1,120 @@
+<section class="serivce__details n-blue">
+  <div class="container">
+    <div class="row">
+      <!--left-->
+      <div class="col-md-6 col-12">
+        <!--main img-->
+        <div class="row main__img">
+          <div class="col-12">
+            <figure class="">
+              <img [src]="product.images.mainImage" alt="" srcset="" />
+            </figure>
+          </div>
+        </div>
+        <!--secondary img-->
+        <div class="row secondary__img">
+          <div class="col-4" *ngFor="let img of product.images.subImages">
+            <figure class="">
+              <img [src]="img" alt="nubian art" srcset="" />
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--right-->
+      <div class="col-md-6 col-12">
+        <!--title-->
+        <div class="row">
+          <div class="col-12">
+            <div>
+              <h3>{{ product.title }}</h3>
+
+              <ul class="list-inline">
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+              </ul>
+              <p class="n-red fw-bold fs-5">{{ product.price }}LE</p>
+              <p class="">Default Size: 100x70 cm</p>
+              <p class="text-dark">
+                Morbi leo risus, porta acoor bagt consectetur ac, vestibulum at
+                eros. Morbi leo risus, porta acr vdv trtee consectetur ac,
+                vestibulum at. erosleo risus, porta ac consectetur vestibulum at
+                eros. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row py-3">
+          <div class="col-md-12 col-12 mb-md-0 mb-2">
+            <span
+              ><a
+                routerLink="/orders/coutomize-order/{{ product.id }}"
+                class="btn btn-blue w-50"
+                >Customize the service</a
+              ></span
+            >
+          </div>
+        </div>
+        <!-- btn request-->
+        <div class="row">
+          <div class="col-md-8 col-12 mb-md-0 mb-2">
+            <div class="row">
+              <div class="col-md-6">
+                <span
+                  ><a
+                    (click)="addtocart(product)"
+                    class="btn btn-blue btn-border fs-7"
+                  >
+                    Add to cart
+                  </a></span
+                >
+              </div>
+              <div class="col-md-6">
+                <span (click)="_AddToWishList(product)"
+                  ><a class="btn btn-blue btn-border">Add to fav</a></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row flex-row-reverse">
+      <span
+        class="
+          triangle1
+          w-25
+          position-absolute
+          top-75
+          start-75
+          translate-middle
+        "
+      >
+        <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+      </span>
+    </div>
+  </div>
+</section>
+
+<!---------------------------Start  tetimonials--------------------------->
+<app-testimonials></app-testimonials>
+<!---------------------------End Tetimonials--------------------------->
+
+<!---------------------------Start  more like this--------------------------->
+<app-more-like></app-more-like>
+<!---------------------------End  more like this--------------------------->

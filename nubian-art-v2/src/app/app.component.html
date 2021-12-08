@@ -1,0 +1,31 @@
+<ng-container *ngIf="!isRouteAdmin; else admin">
+  <app-navbar></app-navbar>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
+</ng-container>
+
+<ng-template #admin>
+  <main *ngIf="!isAdminLogin; else login">
+    <app-admin-navbar></app-admin-navbar>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <div class="col-md-2 col-xl-2 px-sm-2 px-0 bg-blue">
+          <app-admin-side-nav></app-admin-side-nav>
+        </div>
+        <div class="col py-4 px-4">
+          <!-- content -->
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <!-- <app-admin-footer></app-admin-footer> -->
+  </main>
+
+  <ng-template #login>
+    <router-outlet></router-outlet>
+  </ng-template>
+</ng-template>

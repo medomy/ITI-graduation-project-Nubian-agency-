@@ -1,0 +1,161 @@
+<!-----------------------Start checkout order----------------------------->
+<section class="checkout__page n-blue">
+  <div class="container">
+    <div class="row">
+      <!--content-->
+      <div class="col-md-8">
+        <!--head title-->
+
+        <div class="row">
+          <div class="col-12">
+            <h2 class="head__title">Check out</h2>
+          </div>
+        </div>
+
+        <!--forme area-->
+        <div class="row justify-content-center pt-md-3">
+          <div class="col-md-8 col-12">
+            <form class="row g-3">
+              <!--information price area-->
+              <div class="col-md-12">
+                <table class="table">
+                  <tbody>
+                    <tr *ngFor="let cartproduct of cartProducts; let i = index">
+                      <th scope="row">
+                        {{ cartItemsArr[i].quantity }} X {{ cartproduct.title }}
+                      </th>
+                      <td class="n-border-left">
+                        {{ cartItemsArr[i].quantity * cartproduct.price }} LE
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Shipping</th>
+                      <td class="n-border-left">{{ shipping }} LE</td>
+                    </tr>
+
+                    <tr class="n-border-top">
+                      <th scope="row">totalPrice:</th>
+                      <td class="n-border-left">{{ totalPrice }} LE</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--Address-->
+
+              <!--card number-->
+              <div class="col-12 position-relative">
+                <label for="cardNumber" class="form-label fw-bold"
+                  >card number</label
+                >
+                <input
+                  type="text"
+                  class="form-control n-input"
+                  id="cardNumber"
+                  value=""
+                />
+              </div>
+              <!--card holder name-->
+              <div class="col-12 position-relative">
+                <label for="cardHolderName" class="form-label fw-bold"
+                  >card holder name</label
+                >
+                <input
+                  type="text"
+                  class="form-control n-input"
+                  id="cardHolderName"
+                  value=""
+                />
+              </div>
+              <!--date-->
+
+              <div class="col-md-12 position-relative">
+                <div class="row">
+                  <div class="col-md-8">
+                    <label for="date" class="form-label fw-bold">Date</label>
+                    <input
+                      type="Text"
+                      class="form-control n-input"
+                      id="date"
+                      placeholder=""
+                      value=""
+                    />
+                  </div>
+                  <!--CVV-->
+                  <div class="col-md-4 pt-md-0 pt-3">
+                    <label for="cvv" class="form-label fw-bold">CVV</label>
+                    <input
+                      type="Text"
+                      class="form-control n-input"
+                      id="cvv"
+                      placeholder=""
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 text-center position-relative">
+                <span class="btn btn-blue w-50" (click)="checkClick()"
+                  >Pay by visa</span
+                >
+              </div>
+              <div
+                class="col-12 text-center position-relative"
+                id="PaybalArea"
+              ></div>
+              <div class="col-12 text-center position-relative">
+                <span class="fw-bold line">OR</span>
+              </div>
+              <div class="col-12 text-center position-relative">
+                <span
+                  class="btn btn-blue btn-border w-50"
+                  (click)="openUnPaid(content)"
+                  >Pay on dilevery</span
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--Pattern-->
+      <div class="col-md-4 d-md-block d-none">
+        <div class="pattern">
+          <img
+            src="https://i.ibb.co/dJgZqjZ/pattern-order.png"
+            alt="pattern-order"
+          />
+        </div>
+      </div>
+    </div>
+
+    <ng-template #content let-modal>
+      <div class="modal-content n-border">
+        <div class="modal-body text-center">
+          <figure class="m-auto w-50">
+            <img src="../../../../assets/images/nubian/modal-check-out.png" />
+          </figure>
+          <div class="pt-3 pb-2">
+            <h3 class="fw-bold n-blue">Congratulations!</h3>
+            <h6>you completed the purchase process</h6>
+          </div>
+          <div class="pt-3 n-blue">
+            <span>You payed:</span>
+            <span>{{ totalPrice }} LE</span>
+          </div>
+          <div class="pt-3">
+            <h4>Your order is on its way!</h4>
+          </div>
+          <div class="pt-3">
+            <span class="btn btn-blue mx-2"> shop for more items </span>
+
+            <span
+              class="btn btn-blue btn-border"
+              (click)="modal.close('Save click')"
+              >Ok</span
+            >
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
+<!-----------------------End checkout order----------------------------->

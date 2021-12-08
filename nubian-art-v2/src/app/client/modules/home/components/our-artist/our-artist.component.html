@@ -1,0 +1,47 @@
+<section class="artist">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pb-5">
+        <h2 class="head__title">Our artists</h2>
+      </div>
+    </div>
+    <ng-container *ngIf="!!artists; else loading">
+      <div class="row">
+        <div class="col-12">
+          <!-- Swiper -->
+          <swiper
+            [slidesPerView]="3"
+            [spaceBetween]="25"
+            [slidesPerGroup]="1"
+            [loop]="true"
+            [loopFillGroupWithBlank]="true"
+            [navigation]="true"
+            class="mySwiper swiper-2"
+          >
+            <ng-template swiperSlide *ngFor="let artist of artists">
+              <figure class="figure w-50">
+                <img [src]="artist.avatar" class="rounded-circle" alt="" />
+                <figcaption class="figure-caption text-center mt-3">
+                  <h6>{{ artist.name }}</h6>
+                  <h4>{{ artist.dpt.name }}</h4>
+                </figcaption>
+              </figure>
+            </ng-template>
+          </swiper>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+    <div class="row">
+      <span class="triangle1"
+        ><img
+          src="https://i.ibb.co/fM7vLX9/triangle1.png"
+          alt="triangle1"
+          alt=""
+      /></span>
+    </div>
+  </div>
+</section>

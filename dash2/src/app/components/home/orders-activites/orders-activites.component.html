@@ -1,0 +1,106 @@
+<section class="ps-3 p-0 service__admin">
+  <div class="row pb-3">
+    <div class="col-8">
+      <h2 class="head__title fs-4">Customize Order</h2>
+    </div>
+  </div>
+
+  <div class="example-header">
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <ng-container *ngIf="dataSource; else loading">
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="image">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Image
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <img [src]="row.photoUrl" alt="" style="width: 50px" />
+          </mat-cell>
+        </ng-container>
+
+        <!-- product Column -->
+        <ng-container matColumnDef="product">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Product
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{ row.productData.title }}</mat-cell
+          >
+        </ng-container>
+        <!-- color Column -->
+        <ng-container matColumnDef="color">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Color
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" [style.color]="row.frameColor">
+            {{ row.frameColor }}</mat-cell
+          >
+        </ng-container>
+        <!-- size Column -->
+        <ng-container matColumnDef="size">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Size
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.desiredSize }}</mat-cell>
+        </ng-container>
+        <!-- message Column -->
+        <ng-container matColumnDef="message" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Message
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            {{ row.specialOrder }}</mat-cell
+          >
+        </ng-container>
+        <!-- user Column -->
+        <ng-container matColumnDef="user" class="ps-3">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            User
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="ps-3">
+            {{ row.userData[0].displayName }}</mat-cell
+          >
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <input
+              class="form-check-input me-3"
+              type="checkbox"
+              [checked]="row.AdminResponse ? true : ''"
+              [disabled]="row.AdminResponse ? true : ''"
+            />
+            <span
+              routerLink="/admin/customize-order/details/{{ row.id }}"
+              routerLinkActive="active"
+            >
+              <i class="far fa-eye pointer n-blue"></i>
+            </span>
+            <span (click)="remove(row.id)">
+              <i class="fas fa-trash-alt n-red ps-3 pointer"></i>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+      </mat-table>
+    </ng-container>
+
+    <ng-template #loading> <app-loading></app-loading> </ng-template>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</section>

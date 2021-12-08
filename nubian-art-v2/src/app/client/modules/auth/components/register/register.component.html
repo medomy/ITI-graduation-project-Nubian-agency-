@@ -1,0 +1,208 @@
+<section class="register__page n-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-12">
+        <div class="row">
+          <div class="col-12 pb-4">
+            <h2 class="head__title">Register</h2>
+          </div>
+        </div>
+        <!--form area-->
+        <div class="row">
+          <div class="col-md-8 col-12 form_area m-auto">
+            <!--Form Area-->
+            <form [formGroup]="user" (ngSubmit)="register()" class="row g-3">
+              <!--Name-->
+              <div class="col-md-12 position-relative">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control n-input s"
+                  id="name"
+                  formControlName="name"
+                  name="name"
+                  placeholder="userName"
+                  value=""
+                />
+                <!--error-->
+                <div
+                  [class.d-block]="
+                    userControls.name.touched && !userControls.name.valid
+                  "
+                  class="invalid-feedback n-red"
+                >
+                  Name must be at least of 3 characters
+                </div>
+              </div>
+
+              <!--email-->
+              <div class="col-md-12 position-relative">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control n-input"
+                  id="email"
+                  formControlName="email"
+                  name="email"
+                  placeholder="Email@info.com"
+                  value=""
+                />
+                <!--error-->
+                <div
+                  [class.d-block]="
+                    userControls.email.touched && !userControls.email.valid
+                  "
+                  class="invalid-feedback n-red"
+                >
+                  Email must be like email@info.com
+                </div>
+              </div>
+
+              <!--Phone-->
+
+              <div class="col-md-12 position-relative">
+                <div class="row">
+                  <div class="col-3">
+                    <input
+                      type="phone"
+                      class="form-control n-input"
+                      disabled
+                      placeholder="(Eg)+20"
+                      value="+20"
+                    />
+                  </div>
+                  <div class="col-9">
+                    <input
+                      type="phone"
+                      class="form-control n-input"
+                      id="phone"
+                      placeholder="123456789"
+                      value=""
+                      formControlName="phone"
+                      name="phone"
+                    />
+
+                    <div
+                      [class.d-block]="
+                        userControls.phone.touched && !userControls.phone.valid
+                      "
+                      class="invalid-feedback n-red"
+                    >
+                      Phone number is not valid it should begin with 010 or 011
+                      or 012 or 015 and contains 11 numbers
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--password-->
+              <div class="col-md-12 position-relative">
+                <label for="password" class="form-label">Password</label>
+                <!--Input-->
+                <div class="input-group">
+                  <input
+                    [type]="passVisible ? 'password' : 'text'"
+                    class="form-control n-input border-right-none"
+                    id="password"
+                    placeholder="*********"
+                    value=""
+                    formControlName="password"
+                    name="password"
+                  />
+                  <span
+                    class="input-group-text bg-white"
+                    (click)="ShowPassword()"
+                  >
+                    <svg
+                      width="28"
+                      height="16"
+                      viewBox="0 0 28 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M25.0283 0C24.8315 0 24.6348 0.0885113 24.4774 0.265502C22.5098 2.74336 20.3062 4.82299 17.5516 6.15042C16.1743 6.81413 14.7183 7.1681 13.223 7.07961C11.6883 6.99111 10.2323 6.46017 8.89434 5.66371C6.61198 4.33628 4.68376 2.43362 2.95231 0.309738C2.83426 0.132748 2.63751 0.0442638 2.40141 0.0442638H2.24399C1.61438 0.0442638 1.29958 0.84072 1.69309 1.37169C2.36206 2.25664 3.22779 3.27433 3.66065 3.71681C5.51015 5.6637 7.59575 7.21235 9.99617 8.1858C11.6883 8.84951 13.4197 9.07076 15.1905 8.80527C17.04 8.49554 18.6928 7.69908 20.2668 6.63713C21.8015 5.61944 24.1232 3.00884 25.4611 1.41593C25.9727 0.840709 25.6579 0 25.0283 0Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M0.826378 10.573C0.59027 10.573 0.393513 10.4845 0.236108 10.3075C-0.0787027 9.95353 -0.0787027 9.33404 0.236108 8.9358L2.95134 5.88268C3.26615 5.52869 3.81708 5.52869 4.17124 5.88268C4.48605 6.23667 4.48605 6.85613 4.17124 7.25437L1.45599 10.3075C1.25923 10.4845 1.02313 10.573 0.826378 10.573Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M5.62603 14.2024C5.50798 14.2024 5.38991 14.1581 5.27186 14.1139C4.839 13.8927 4.64224 13.3174 4.87835 12.8307L6.49173 8.93691C6.68849 8.45019 7.20006 8.22895 7.63293 8.49443C8.06579 8.71567 8.26254 9.2909 8.02644 9.77763L6.41305 13.6714C6.25565 13.9811 5.94084 14.2024 5.62603 14.2024Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M10.8224 15.3087C10.7437 15.3087 10.7043 15.3086 10.6256 15.2644C10.1534 15.1316 9.87796 14.6449 9.99602 14.114L10.8617 9.91048C10.9798 9.37951 11.4126 9.06979 11.8849 9.20253C12.3571 9.33528 12.6325 9.82199 12.5145 10.353L11.6488 14.5564C11.5701 14.9989 11.2159 15.3087 10.8224 15.3087Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M27.0338 9.90881C26.7977 9.90881 26.6009 9.82033 26.4435 9.64334L23.7283 6.59026C23.4135 6.23629 23.4135 5.61683 23.7283 5.21861C24.0431 4.86463 24.594 4.86463 24.9482 5.21861L27.6634 8.27166C27.9782 8.62564 27.9782 9.24511 27.6634 9.64334C27.4667 9.82033 27.2699 9.90881 27.0338 9.90881Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M22.2315 13.5382C21.9167 13.5382 21.6019 13.317 21.4445 12.963L19.8311 9.06918C19.6343 8.58245 19.8311 8.00725 20.2246 7.78601C20.6575 7.56477 21.169 7.78601 21.3658 8.22849L22.9791 12.1223C23.1759 12.609 22.9791 13.1842 22.5856 13.4055C22.4676 13.5382 22.3495 13.5382 22.2315 13.5382Z"
+                        fill="#2F2EA6"
+                      />
+                      <path
+                        d="M17.0413 15.3082C16.6478 15.3082 16.2937 14.9984 16.215 14.5559L15.3492 10.3524C15.2312 9.82141 15.546 9.3347 15.9789 9.20195C16.4511 9.06921 16.8839 9.42318 17.002 9.90991L17.8677 14.1135C17.9857 14.6444 17.6709 15.1312 17.2381 15.2639C17.1594 15.3082 17.0807 15.3082 17.0413 15.3082Z"
+                        fill="#2F2EA6"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <!--error-->
+                <div
+                  [class.d-block]="
+                    userControls.password.touched &&
+                    !userControls.password.valid
+                  "
+                  class="invalid-feedback n-red"
+                >
+                  Password must be like Pa$$w0rd!
+                </div>
+
+                <span class="d-block">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="rememberMe"
+                    checked
+                  />
+                  <label class="form-check-label" for="rememberMe">
+                    Remember me
+                  </label></span
+                >
+                <span> </span>
+              </div>
+
+              <div class="col-12 text-center position-relative">
+                <button class="btn btn-blue w-25" type="submit">
+                  Register
+                </button>
+
+                <span class="d-block mt-3">
+                  already have an account?<a
+                    class="n-blue hover"
+                    [routerLink]="['auth/login']"
+                    >Login</a
+                  ></span
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!--Pattern-->
+      <div class="col-md-4 d-md-block d-none">
+        <div class="pattern">
+          <img
+            src="../../../../assets/images/pattern/pattern-register.png"
+            alt="login__pattern"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

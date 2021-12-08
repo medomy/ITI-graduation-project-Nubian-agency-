@@ -1,0 +1,52 @@
+<section class="userForm">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-6 m-auto ps-0 text-center">
+        <img src="../../../../assets/images/nubian/logo.png" class="w-50" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 m-auto">
+        <form [formGroup]="user" (ngSubmit)="login()">
+          <h2>Login Admin</h2>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              formControlName="email"
+              placeholder="Email"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              formControlName="password"
+              placeholder="********"
+            />
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary d-block w-100" type="submit">
+              Log In
+            </button>
+            <div
+              *ngFor="let alert of errors"
+              class="alert alert-danger mt-3 alert-dismissible fade show"
+              role="alert"
+            >
+              {{ alert }}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

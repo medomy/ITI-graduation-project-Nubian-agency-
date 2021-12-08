@@ -1,0 +1,51 @@
+<!-- Card-->
+<div class="card service__item rounded-0 n-border mb-5">
+  <div class="card-body px-3 pt-5 text-center">
+    <!--img-->
+    <figure>
+      <img
+        src="{{ product.images.mainImage }}"
+        alt=""
+        class="img-fluid d-block mb-3"
+      />
+      <span (click)="_AddToWishList(product)">
+        <i class="fas fa-heart"></i>
+      </span>
+    </figure>
+    <!--title-->
+    <h5 class="n-blue">{{ product.title }}</h5>
+    <!--description-->
+    <p>{{ product.desctition }}</p>
+    <!--rate-->
+    <div class="d-flex justify-content-between">
+      <span class="n-red fw-bold fs-5">{{ product.price }}LE</span>
+      <ngb-rating
+        [(rate)]="rating"
+        class="fs-3 n-yellow"
+        [readonly]="true"
+      ></ngb-rating>
+    </div>
+    <div class="row justify-content-center">
+      <span
+        routerLink="/orders/coutomize-order/response/{{ product.id }}"
+        class="btn btn-blue w-50 mb-3 fs-7"
+        >Check this service</span
+      >
+      <span
+        [routerLink]="['details/', product.id]"
+        class="
+          btn btn-blue btn-border
+          w-50
+          check
+          position-absolute
+          top-100
+          start-50
+          translate-middle
+          fs-7
+        "
+      >
+        View Details</span
+      >
+    </div>
+  </div>
+</div>

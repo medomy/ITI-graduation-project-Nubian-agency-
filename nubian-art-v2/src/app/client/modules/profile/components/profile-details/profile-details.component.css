@@ -1,0 +1,11 @@
+.profile__details-area figure {
+  position: relative;
+}
+.profile__details-area figure.head__title::before {
+  top: unset;
+  bottom: 0;
+  left: -1.2rem;
+}
+.profile__btn-edit:hover i svg path {
+  fill: #fff;
+}

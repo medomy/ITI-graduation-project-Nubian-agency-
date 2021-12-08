@@ -1,0 +1,31 @@
+.line::before {
+  content: "";
+  display: block;
+  width: 122px;
+  height: 3px;
+  background: var(--n-blue);
+  left: 6rem;
+  top: 50%;
+  position: absolute;
+}
+.line:after {
+  content: "";
+  display: block;
+  width: 122px;
+  height: 3px;
+  background: var(--n-blue);
+
+  right: 6rem;
+  top: 50%;
+  position: absolute;
+}
+
+.modal-content {
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-body h3 {
+  font-size: 36px;
+}

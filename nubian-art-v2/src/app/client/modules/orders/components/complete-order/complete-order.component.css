@@ -1,0 +1,6 @@
+.order__pattern {
+  position: absolute;
+  left: 71vw;
+  top: 0;
+  z-index: -1;
+}

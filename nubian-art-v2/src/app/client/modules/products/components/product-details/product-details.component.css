@@ -1,0 +1,10 @@
+/* .main__img figure {
+  width: 490.58px;
+} */
+.secondary__img figure img {
+  width: 106.47px;
+  height: 100.13px;
+}
+.triangle1 {
+  z-index: -1;
+}

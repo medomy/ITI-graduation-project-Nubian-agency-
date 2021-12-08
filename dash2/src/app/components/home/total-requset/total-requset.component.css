@@ -1,0 +1,14 @@
+.all__user {
+  background: var(--n-blue);
+  color: white;
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.all__user h3 {
+  font-size: 51px;
+}
+.all__user h6 {
+  font-size: 19px;
+}

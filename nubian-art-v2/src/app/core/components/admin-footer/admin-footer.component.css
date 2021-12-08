@@ -1,0 +1,6 @@
+.admin__footer {
+  background-color: var(--n-blue);
+}
+.admin__footer span {
+  color: white;
+}

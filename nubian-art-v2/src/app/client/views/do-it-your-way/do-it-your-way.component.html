@@ -1,0 +1,138 @@
+<!---------------------Start Design a product--------------------->
+<section class="Design__product">
+  <div class="container">
+    <!--Design product-->
+    <div class="row align-items-start">
+      <div class="col-lg-6 col-12 pt-5">
+        <h2 class="head__title">Design your own product</h2>
+        <p class="description">
+          Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec
+          ullamcorper nulla non metus auctor fringilla. Integer posuere erat a
+          ante venenatis dapibus posuere velit aliquet. Done
+        </p>
+
+        <div class="row">
+          <div class="col-6">
+            <span class="triangle1">
+              <img
+                src="https://i.ibb.co/fM7vLX9/triangle1.png"
+                alt="triangle1"
+              />
+            </span>
+          </div>
+          <div class="col-6 mt-md-5 pt-md-5">
+            <span class="sub__title n-blue group">
+              Choose a product <span class="vector"></span
+            ></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <figure class="w-75 m-auto text-end position-relative">
+          <img
+            src="../../../../assets/images/do-it-your-way/bottles cover2.png"
+            alt=""
+            srcset=""
+          />
+          <span class="triangle2"
+            ><svg
+              width="98"
+              height="84"
+              viewBox="0 0 98 84"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M34.6569 30.5176L69.3125 83.7086L0.00130233 83.7086L34.6569 30.5176Z"
+                fill="#2F2EA6"
+              />
+              <path
+                d="M62.7572 55.2148L28.1016 0.124165L97.4128 0.124162L62.7572 55.2148Z"
+                fill="#2F2EA6"
+              />
+            </svg>
+          </span>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!---------------------End Design a product----------------------->
+
+<!---------------------Start choose a product----------------------->
+<section class="choose__product">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pb-5">
+        <h2 class="head__title">Choose your product</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- Swiper -->
+        <swiper
+          [slidesPerView]="5"
+          [spaceBetween]="0"
+          [slidesPerGroup]="1"
+          [loop]="true"
+          [loopFillGroupWithBlank]="true"
+          [navigation]="true"
+          class="mySwiper swiper-2"
+        >
+          <ng-template swiperSlide *ngFor="let prodcut of prodcuts">
+            <figure class="figure w-75">
+              <img [src]="prodcut.img" class="" alt="" />
+              <figcaption class="figure-caption text-center">
+                <h6>{{ prodcut.title }}</h6>
+              </figcaption>
+            </figure>
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+    <div class="row pt-md-5">
+      <div class="col-8 text-center m-auto">
+        <span class="sub__title n-blue group">
+          customize your design <span class="vector"></span
+        ></span>
+      </div>
+      <div class="col-2">
+        <div class="row flex-row-reverse">
+          <span class="triangle1">
+            <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!---------------------End choose a product----------------------->
+<!---------------------Start Do it your way----------------------->
+<app-do-your-design></app-do-your-design>
+<!---------------------End Do it your way----------------------->
+<!---------------------Start try on other product----------------------->
+<section class="try__other-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pb-5">
+        <h2 class="head__title">Try your design on other products</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-md-3"
+        *ngFor="let prodcut of prodcuts | slice: 0:4; let i = index"
+      >
+        <figure class="figure w-75">
+          <img [src]="prodcut.img" class="w-100" alt="" />
+          <figcaption class="figure-caption text-center">
+            <h6 class="pt-2">{{ prodcut.title }}</h6>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<!---------------------End try on other product----------------------->

@@ -1,0 +1,126 @@
+<section class="ps-3 p-0">
+  <div class="row n-blue">
+    <div class="col-12">
+      <h2 class="head__title">Add New Arist</h2>
+    </div>
+    <ng-container *ngIf="categeories; else loading">
+      <div class="row pt-3">
+        <div class="col-12 m-auto">
+          <form [formGroup]="aristForm" (ngSubmit)="addArtist()">
+            <!--name-->
+            <div class="mb-3">
+              <label class="form-label">Name:</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                formControlName="name"
+                placeholder=""
+              />
+            </div>
+            <!--email-->
+            <div class="mb-3">
+              <label class="form-label">Email:</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="email"
+                formControlName="email"
+                placeholder=""
+              />
+            </div>
+            <!--country-->
+            <div class="mb-3">
+              <label class="form-label">Country:</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="country"
+                formControlName="country"
+                placeholder=""
+              />
+            </div>
+
+            <!--Gender-->
+            <div class="mb-3">
+              <label for="categories" class="form-label fw-blod">Gender</label>
+
+              <select
+                class="form-select form-select-sm n-select"
+                aria-label=".form-select-sm example"
+                name="gender"
+                formControlName="gender"
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <!--date Of Birth-->
+            <div class="mb-3">
+              <label class="form-label fw-blod">Date of birth</label>
+
+              <input
+                type="date"
+                class="form-control n-date"
+                placeholder="yyyy-mm-dd"
+                formControlName="date"
+              />
+            </div>
+            <!--department-->
+            <div class="mb-3">
+              <label class="form-label fw-blod">Department</label>
+
+              <select
+                class="form-select form-select-sm n-select"
+                aria-label=".form-select-sm example"
+                name="department"
+                formControlName="department"
+              >
+                <option
+                  *ngFor="let category of categeories"
+                  [value]="category.id"
+                >
+                  {{ category.name }}
+                </option>
+              </select>
+            </div>
+            <!--uplaod avatar-->
+            <div class="file-upload mb-3">
+              <label class="form-label fw-blod pe-3 d-block">Avatar</label>
+
+              <input
+                type="file"
+                (change)="upload($event.target.files)"
+                formControlName="avatar"
+                writeFile="true"
+              />
+
+              Upload Percent: {{ percentDone }}% <br />
+
+              <ng-container *ngIf="uploadSuccess">
+                Upload Successful
+              </ng-container>
+            </div>
+
+            <div class="mb-3">
+              <button
+                [disabled]="!aristForm.valid || !uploadSuccess"
+                class="btn btn-blue d-block"
+                type=" submit"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </div>
+</section>

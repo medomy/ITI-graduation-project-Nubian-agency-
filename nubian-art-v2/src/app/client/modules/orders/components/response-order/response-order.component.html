@@ -1,0 +1,121 @@
+<section class="serivce__details n-blue">
+  <div class="container">
+    <div class="row">
+      <!--left-->
+      <div class="col-md-6 col-12">
+        <!--main img-->
+        <div class="row main__img">
+          <div class="col-12">
+            <figure class="">
+              <img
+                [src]="product[0].prodcutData.images.mainImage"
+                alt=""
+                srcset=""
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--right-->
+      <div class="col-md-6 col-12">
+        <!--title-->
+        <div class="row">
+          <div class="col-12">
+            <div>
+              <h3>{{ product[0].prodcutData.title }}</h3>
+
+              <ul class="list-inline">
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+                <li class="list-inline-item fs-5">
+                  <i class="fa fa-star n-yellow"></i>
+                </li>
+              </ul>
+              <p class="n-red fw-bold fs-5">
+                {{ product[0].prodcutData.price }} LE
+              </p>
+              <p class="">Default Size: 100x70 cm</p>
+              <p class="text-dark">
+                Morbi leo risus, porta acoor bagt consectetur ac, vestibulum at
+                eros. Morbi leo risus, porta acr vdv trtee consectetur ac,
+                vestibulum at. erosleo risus, porta ac consectetur vestibulum at
+                eros. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros.
+              </p>
+            </div>
+
+            <div class="mb-3">
+              <label for="size" class="form-label">Size:</label>
+              <span> {{ product[0].desiredSize }}</span>
+            </div>
+            <div class="mb-3">
+              <label for="color" class="form-label">Frame color:</label>
+              <div class="d-flex">
+                <span
+                  class="dot"
+                  [ngStyle]="{ background: product[0].frameColor }"
+                >
+                </span>
+
+                <span class="ps-3" [ngStyle]="{ color: product[0].frameColor }">
+                  {{ product[0].frameColor }}
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="special" class="form-label">Special request:</label>
+              <textarea
+                class="form-control n-input"
+                id="special"
+                rows="6"
+                name="special"
+                [(ngModel)]="product[0].specialOrder"
+                disabled
+              >
+              </textarea>
+            </div>
+
+            <div class="mb-3">
+              <h4>Admin Response:</h4>
+              <p class="text-dark">
+                {{ product[0].AdminResponse }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- btn request-->
+        <div class="row">
+          <div class="col-md-8 col-12 mb-md-0 mb-2">
+            <div class="row">
+              <div class="col-md-6">
+                <span (click)="confirmOrder()"
+                  ><a class="btn btn-blue btn-border"> confirm order </a></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!---------------------------Start  tetimonials--------------------------->
+<app-testimonials></app-testimonials>
+<!---------------------------End Tetimonials--------------------------->
+
+<!---------------------------Start  more like this--------------------------->
+<app-more-like></app-more-like>
+<!---------------------------End  more like this--------------------------->

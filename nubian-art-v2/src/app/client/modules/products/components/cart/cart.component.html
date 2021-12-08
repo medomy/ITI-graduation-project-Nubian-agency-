@@ -1,0 +1,160 @@
+<section class="cart n-blue">
+  <div class="container">
+    <!--pattern-->
+    <div class="row flex-row-reverse">
+      <span class="triangle1">
+        <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+      </span>
+    </div>
+
+    <!--head title-->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="head__title">Cart</h2>
+      </div>
+    </div>
+    <ng-container *ngIf="products; else notLoading">
+      <!--count of items -->
+      <div class="row pt-3">
+        <span>{{ products.length }} Products</span>
+      </div>
+      <!--cart items-->
+      <div class="row pt-3">
+        <div class="col-12">
+          <table class="table n-blue">
+            <!--table head-->
+            <thead class="n-border-top n-border-bottom">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <!--table body-->
+
+            <tbody>
+              <tr *ngFor="let item of products" class="n-border-bottom">
+                <!--Product Details-->
+                <td data-th="product">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <img
+                        [src]="item.productData.images.mainImage"
+                        class="n-border"
+                      />
+                    </div>
+
+                    <div class="col-sm-10">
+                      <h4 class="cart__item-title">
+                        {{ item.productData.title }}
+                      </h4>
+                      <p class="cart__item-desc">
+                        {{ item.productData.description }}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <!--Product Price-->
+                <td data-th="cart__item-price " class="n-red fw-bold fs-6">
+                  {{ item.productData.price }}
+                </td>
+                <!--Product Quantity-->
+                <td data-th="cart__item-qtn ">
+                  <!--decrease item-->
+                  <div class="d-flex justify-content-center alignt-item-center">
+                    <span class="cart__item-icon">
+                      <span
+                        (click)="decreaseItem(item.productData)"
+                        class="btn btn-blue p-1"
+                        >-</span
+                      >
+                      <!-- <img
+                        (click)="decreaseItem(item.id)"
+                        src="../../../../assets/images/buttons/minus 1.png"
+                        class="w-100"
+                      /> -->
+                    </span>
+                    <!--qunatinty-->
+                    <span class="px-2"> {{ item.quantity }}</span>
+                    <!--increase-->
+                    <span class="cart__item-icon">
+                      <span
+                        (click)="addtocart(item.productData)"
+                        class="btn btn-blue p-1"
+                        >+</span
+                      >
+                      <!-- <img
+                        (click)="addtocart(item.id)"
+                        src="../../../../assets/images/buttons/add 1.png"
+                        class="w-100"
+                      /> -->
+                    </span>
+                  </div>
+                  <!-- <input type="number" class="form-control n-input  w-25" value="1"> -->
+                </td>
+                <!--Subtotal-->
+                <td data-th="subTotal " class="n-red fw-bold fs-6">
+                  {{ item.quantity * item.productData.price }} L.E
+                </td>
+                <!--Actions-->
+                <td data-th="cart__item-remove ">
+                  <span
+                    (click)="removeFromCart(item.id)"
+                    class="cart__item-remove n-blue hover my-3"
+                    >&#10005;</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+            <!--table footer-->
+
+            <tfoot>
+              <tr>
+                <td colspan="" class="text-end">
+                  <h6 class="fw-bold fs-4">Total</h6>
+                  <span class="text-muted">(Including Vat)</span>
+                </td>
+                <td></td>
+                <td class="n-red fw-bold fs-4">
+                  <strong>{{ grandTotalPrice }}</strong>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3"></td>
+                <td>
+                  <span
+                    class="btn btn-blue"
+                    [routerLink]="['/orders/complete']"
+                    [disabled]="isEmpty"
+                  >
+                    Checkout</span
+                  >
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <!-- <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+              (pageChange)="refreshCountries()">
+            </ngb-pagination>
+  
+  
+          </div> -->
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #notLoading>
+      <span>loading....</span>
+    </ng-template>
+    <!--pattern-->
+    <div class="row pb-5">
+      <span class="triangle1">
+        <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+      </span>
+    </div>
+  </div>
+</section>

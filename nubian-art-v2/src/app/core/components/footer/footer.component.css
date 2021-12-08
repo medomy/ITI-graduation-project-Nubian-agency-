@@ -1,0 +1,26 @@
+footer {
+  background: var(--n-blue);
+  padding: 20px;
+  z-index: 9999999;
+}
+footer h3 {
+  color: var(--n-yellow);
+  font-weight: bold;
+  font-size: 22px;
+}
+footer ul li a {
+  color: #fff;
+  cursor: pointer;
+}
+footer ul li a:hover {
+  color: var(--n-yellow);
+}
+footer .contact__icon li {
+  color: var(--n-yellow);
+  font-size: 2.5rem;
+}
+
+footer .copyright {
+  color: #fff;
+  font-size: 14px;
+}

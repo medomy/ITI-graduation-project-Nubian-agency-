@@ -1,0 +1,57 @@
+/*----------------------------Header----------------------------*/
+header {
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+}
+
+header .navbar-light .navbar-nav .nav-link {
+  color: var(--n-blue);
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 25px;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  header .navbar-light .navbar-nav .nav-link {
+    font-size: 12px;
+  }
+}
+.fa-search {
+  color: var(--n-blue);
+}
+header .navbar-light .navbar-nav .nav-item .nav-link.active,
+header .navbar-light .navbar-nav .nav-item .nav-link:hover {
+  font-weight: bold;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  header .navbar-light .navbar-nav .nav-item .nav-link.active,
+  header .navbar-light .navbar-nav .nav-item .nav-link:hover {
+    font-size: 15px;
+  }
+}
+
+header .navbar-light .navbar-nav .nav-item .nav-link.active::before,
+header .navbar-light .navbar-nav .nav-item .nav-link:hover::before {
+  content: "";
+  background: var(--n-yellow);
+  position: absolute;
+  width: 90%;
+  height: 11px;
+  z-index: -1;
+
+  top: 50%;
+}
+header .btn.btn-blue.btn-border:hover {
+  color: #ffffff !important;
+}
+.avatar {
+  width: 35px;
+}
+
+header .search__icon:hover svg path {
+  fill: var(--n-blue-hover);
+}

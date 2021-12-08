@@ -1,0 +1,37 @@
+<section class="slider p-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-auto col-12 p-0">
+                <!-- Swiper -->
+                <swiper [cssMode]="true" [navigation]="true" [pagination]="true" [mousewheel]="true" [keyboard]="true"
+                    class="mySwiper">
+                    <ng-template swiperSlide *ngFor="let item of Images">
+                        <img [src]="item.src" alt="item.alt">
+                        <div class="content">
+                            <h3 class="n-blue fw-bold mb-4"> Design your own product <br> using nubian patterns </h3>
+                            <button type="button" class="btn btn-blue btn-border ">Design your product</button>
+                        </div>
+                    </ng-template>
+
+
+                </swiper>
+
+                <div class="static_-content">
+                    <div class="pattern">
+                        <svg width="87" height="577" viewBox="0 0 87 577" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 0V577" stroke="#F14F3A" stroke-opacity="0.78" stroke-width="12" />
+                            <path d="M4 0V577" stroke="#F14F3A" stroke-opacity="0.78" stroke-width="7" />
+                            <path d="M33 348L58 386L8 386L33 348Z" fill="#2F2EA6" />
+                            <path d="M50.5 482L14 426L87 426L50.5 482Z" fill="#2F2EA6" />
+                        </svg>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

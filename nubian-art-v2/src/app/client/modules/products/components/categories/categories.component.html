@@ -1,0 +1,56 @@
+<section class="service">
+  <div class="container">
+    <div class="row flex-row-reverse">
+      <span class="triangle1">
+        <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+      </span>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2 class="head__title">Choose your desired service</h2>
+      </div>
+    </div>
+
+    <!--categories area-->
+    <ng-container *ngIf="categories; else loading">
+      <div class="row align-items-center justify-content-center">
+        <div
+          class="col-lg-3 col-md-6 col-12 text-center"
+          *ngFor="let category of categories"
+        >
+          <figure
+            class="
+              figure
+              d-flex
+              align-items-center
+              flex-column
+              mt-5
+              m-auto
+              w-50
+            "
+          >
+            <img [src]="category.image" class="rounded-circle" alt="" />
+
+            <figcaption class="figure-caption pt-2">
+              <a routerLink="/service/list/{{ category.id }}" class="n-blue">{{
+                category.name
+              }}</a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </ng-container>
+
+ <ng-template #loading>
+   <app-loading></app-loading>
+ </ng-template>
+
+    <div class="row flex-row-reverse">
+      <span class="triangle1">
+        <img src="https://i.ibb.co/fM7vLX9/triangle1.png" alt="triangle1" />
+      </span>
+    </div>
+    
+  </div>
+</section>
+

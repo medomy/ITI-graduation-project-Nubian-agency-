@@ -1,0 +1,91 @@
+<section class="ps-3 p-0 service__admin">
+  <div class="row pb-3">
+    <div class="col-8">
+      <h2 class="head__title fs-4">Our Products</h2>
+    </div>
+    <div class="col-4 text-right">
+      <span class="n-blue pointer" [routerLink]="['/admin/services/add']"
+        >+ Add new service
+      </span>
+    </div>
+  </div>
+
+  <div class="example-header">
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Image
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <img [src]="row.images.mainImage" alt="" style="width: 50px" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          title
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.title }}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="ps-5">
+          price
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="ps-5">
+          {{ row.price }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="create">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          createdAt
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color">
+          {{ row.TimeStamp.createdAt | date }}
+        </mat-cell>
+      </ng-container>
+      <!-- Color Column -->
+      <ng-container matColumnDef="update">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          updateAt
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color">
+          {{ row.TimeStamp.createdAt | date }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          action
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color">
+          <span routerLink="/admin/services/update/{{ row.id }}">
+            <i class="fas fa-pencil-alt n-blue pointer"></i>
+          </span>
+
+          <span (click)="remove(row.id)">
+            <i class="fas fa-trash-alt n-red ms-3 pointer"></i> </span
+        ></mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</section>
